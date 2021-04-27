@@ -22,10 +22,18 @@ export default App;
      in our case is the city.
   
   3. npm install axios
-  
+
   4. import axios from 'axios';
      Axios is a library that helps us make http requests to external resources. 
      In our React applications we often need to retrieve data from external APIs so it can 
      be displayed in our web pages
+
+  5. by default when the page reloads we fetch Kbh data by default with UseEffect
+     we pass "axios" in and we can decide to do a get request (axios.get) or a post (axios.post)
+     this will give usa promise that we have to do a .then in order to get the value.
+     the then() method, takes in a callback method. The callback method will pass you the data
+     of the API, which we will then log to check them out
+
+
 
 */
