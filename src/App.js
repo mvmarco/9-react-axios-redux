@@ -32,7 +32,20 @@ export default App;
      we pass "axios" in and we can decide to do a get request (axios.get) or a post (axios.post)
      this will give usa promise that we have to do a .then in order to get the value.
      the then() method, takes in a callback method. The callback method will pass you the data
-     of the API, which we will then log to check them out
+     of the API, which we will then log to check them out:
+
+      const location = axios.get(
+        'http://api.weatherapi.com/v1/current.json?key=fb454c4007ae4b63b83154929212704&q=copenhagen&aqi=no'
+      ).then((data) => {
+        console.log(data)
+      }).catch(err => console.log(err, "Sorry something went wrong, try later"));
+      },[])
+
+      .then is like saying API.data to get the value, but since it is a promise you cannot do it
+      in this the way. .catch is in case the promise does not work.
+
+      check the console:) data.location will give us the location and so on
+      like current.something will give us the
 
 
 
