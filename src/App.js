@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 function App() {
   return (
     <div className="App">
@@ -68,17 +70,71 @@ export default App;
      the .env file is not found. So you need to go to "build and deploy", "environments" and add
      the variable name we used inside the .env file.
   4. put the .env file in the .gitignore
-
-
-// ############################
-// REDUX
-// ############################
+  
+  
+  // ############################
+  // REDUX
+  // ############################
+  
+  These notes are based on an example of a counter:
+  
+  import React {useEffect, useState} from "react";
+  
+  function App() {
+    const [counter, setCounter] = useState(0);
+    return(
+      <div>
+        <h1>Counter: {counter} </h1>
+        <button onClick={()=> setCounter((initialNumber) => initialNumber + 1)}></button>
+      </div>
+    )
+  }
+  
+  export default App;
+  
   
   Redux separates each individual states, that before we put in the components or we lifted on 
   the App level, to its own world, its own file, independent from everything. This place is 
-  called "STORE".
+  called "STORE". "STORE" is a globalized state.
+  ----------------------------------------------------------
+  Another important definition of redux is "ACTION". It basically describes what we are about to
+  do. It just describes the action. It is literally a function that returns a name as key 
+  with what we need/want to do. For instance: 
 
-  "STORE" is a globalized state
+  const = increment = () => {
+    return{
+      type: 'INCREMENT'
+    }
+  }
+
+  "type" is essentially the "name" of the action
+  ----------------------------------------------------------
+  The next terminology is the "REDUCER", another function that filters out the ACTION. The "REDUCER"
+  will take a look at the action, and based on what the action is will modify the state.
+  For instance the reducer function will take in the initial state, and the action as arguments.
+  Based on the action we are going to do something with the state. Switch select
+  the action as soon as it matches with the type, when the match occurs something will happen 
+  to the state. If the case is Increment we want to return the state + 1.
+
+  const counter = (state = 0, action) => {
+    switch(action.type) {
+      case 'INCREMENT':
+        return state + 1;
+      case 'DECREMENT':
+        return state -1;
+    }
+  }
+
+  essentially the reducer is the logic that says what is gonna happen to the state.
+  ----------------------------------------------------------
+  "DISPATCH" is basically sending the action to the reducer. It is the fire button that fires
+  the action to the reducer. So you can say:
+
+  DISPATCH('INCREMENT')
+
+  what is gonna do is going to the reducer, the reducer is gonna check what type of action
+  was fired. Boom the state gets updated.
+
 
 
   steps to use Redux:
