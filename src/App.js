@@ -207,8 +207,8 @@ export default App;
       the ideal would be creating in the reducers folder another file called index.js and put:
 
 
-                        import counterReducer from "../reducers/counter";
-                        import loggedReducer from "../reducers/isLogged";
+                        import counterReducer from "./counter";
+                        import loggedReducer from "./isLogged";
                         import {combineReducers} from 'redux';
 
                         const allReducers = combineReducers({
