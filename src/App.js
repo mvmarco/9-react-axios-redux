@@ -86,7 +86,7 @@ export default App;
   1. npm install redux react-redux
      "install redux" is a package can be used with different libraries, not only react while
      "react-redux" is the middle man that connects React with Redux
-  2. 
+  2. import on index.js or on a separate file:  import {createStore} from 'redux';
 
   
 
