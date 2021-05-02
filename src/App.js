@@ -116,7 +116,7 @@ export default App;
   the action as soon as it matches with the type, when the match occurs something will happen 
   to the state. If the case is Increment we want to return the state + 1.
 
-  const counter = (state = 0, action) => {
+  const counterReducer = (state = 0, action) => {
     switch(action.type) {
       case 'INCREMENT':
         return state + 1;
@@ -134,15 +134,49 @@ export default App;
 
   what is gonna do is going to the reducer, the reducer is gonna check what type of action
   was fired. Boom the state gets updated.
-
-
-
+  ----------------------------------------------------------
+  
   steps to use Redux:
 
   1. npm install redux react-redux
      "install redux" is a package can be used with different libraries, not only react while
      "react-redux" is the middle man that connects React with Redux
   2. import on index.js or on a separate file:  import {createStore} from 'redux';
+  3. create a folder called "actions" and another one called "reducers"
+  4. in the "reducers" folder create a file with the name of the reducer for instance
+     counterReducer. Put the function in counterReducer with as argument the initial state
+     and the object "action" that includes all the action:
+
+     const counterReducer = (state = 0, action) => {
+      switch(action.type) {
+      case 'INCREMENT':
+        return state + 1;
+      case 'DECREMENT':
+        return state -1;
+      }
+     }
+
+     export defaul counterReducer;
+
+  5. we can create another reducer, for instance, if the user is logged in do something to the state.
+     so we create anotehr file, called isLogged.js with the reducer function:
+
+     const loggedReducer = (state = false, action) => {
+      switch(action.type) {
+      case 'SIGN_IN':
+        return !state;
+     }
+
+     export defaul loggedReducer;
+
+
+  6. create a store, the store takes as argument the reducer:
+     let store = createStore(counterReducer)
+
+
+
+
+
 
   
 
