@@ -64,6 +64,30 @@ export default App;
      from your app and replace it with:
      from: 'http://api.weatherapi.com/v1/current.json?key=XXXXXXXXX&q=copenhagen&aqi=no'
      to (backticks also): `http://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API}&q=copenhagen&aqi=no`
+  3. if you push the code in production to host such as netlify the api won't work because
+     the .env file is not found. So you need to go to "build and deploy", "environments" and add
+     the variable name we used inside the .env file.
+  4. put the .env file in the .gitignore
 
+
+// ############################
+// REDUX
+// ############################
+  
+  Redux separates each individual states, that before we put in the components or we lifted on 
+  the App level, to its own world, its own file, independent from everything. This place is 
+  called "STORE".
+
+  "STORE" is a globalized state
+
+
+  steps to use Redux:
+
+  1. npm install redux react-redux
+     "install redux" is a package can be used with different libraries, not only react while
+     "react-redux" is the middle man that connects React with Redux
+  2. 
+
+  
 
 */
