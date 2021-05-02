@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <h1>Axios and Redux</h1>
+      <h1>Counter: 0</h1>
+      <button>Increment</button>
     </div>
   );
 }
@@ -147,33 +149,100 @@ export default App;
      counterReducer. Put the function in counterReducer with as argument the initial state
      and the object "action" that includes all the action:
 
-     const counterReducer = (state = 0, action) => {
-      switch(action.type) {
-      case 'INCREMENT':
-        return state + 1;
-      case 'DECREMENT':
-        return state -1;
-      }
-     }
+          const counterReducer = (state = 0, action) => {
+            switch (action.type) {
+              case "INCREMENT":
+                return state + 1;
+              case "DECREMENT":
+                return state - 1;
+              default:
+                return state;
+            }
+          };
 
-     export defaul counterReducer;
+          export default counterReducer;
+
 
   5. we can create another reducer, for instance, if the user is logged in do something to the state.
      so we create anotehr file, called isLogged.js with the reducer function:
 
-     const loggedReducer = (state = false, action) => {
-      switch(action.type) {
-      case 'SIGN_IN':
-        return !state;
-     }
+        const loggedReducer = (state = false, action) => {
+          switch (action.type) {
+            case "SIGN_IN":
+              return !state;
+            default:
+              return state;
+          }
+        };
 
-     export defaul loggedReducer;
+        export default loggedReducer;
 
 
-  6. create a store, the store takes as argument the reducer:
-     let store = createStore(counterReducer)
+
+  6. create a store, import on index.js:  import {createStore} from 'redux';
+     the store takes one argument, the reducer. so if we want the "counterReducer" we do:
+                              let store = createStore(counterReducer)
+     if we want the "loggedReducer" we do:
+                              let store = createStore(loggedReducer)
+     but you cannot pass both in one store. So what we can do is to import "combineReducers"
+     as follow:
+     import {createStore, combineReducers} from 'redux;
+
+     then you just import in index.js this:
+     import counterReducer from "./reducers/counter";
+     import loggedReducer from "./reducers/isLogged";
+     other than:      import {createStore, combineReducers} from 'redux;
+
+     then in index.js you can do:
+
+        const allReducers = combineReducers({
+          counter: counterReducer,
+          isLogged: loggedReducer
+        })
+
+        export default allReducers;
+    
+      -----------------------------------------
+
+      the ideal would be creating in the reducers folder another file called index.js and put:
 
 
+                        import counterReducer from "../reducers/counter";
+                        import loggedReducer from "../reducers/isLogged";
+                        import {combineReducers} from 'redux';
+
+                        const allReducers = combineReducers({
+                          counter: counterReducer,
+                          isLogged: loggedReducer,
+                        })
+
+                        export default allReducers;
+
+      while in the original index.js you have just to import:
+      import {createStore} from "redux";
+      import allReducers from "./reducers"
+
+      and create the store:
+
+      const store = createStore(
+        allReducers
+      )
+      -----------------------------------------
+      REDUX DEV TOOLS EXTENSION: 
+
+      important: go here: https://github.com/zalmoxisus/redux-devtools-extension
+      find the green line: window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+      copy it and the go to the original index.js and in the store, after all the reducers,
+      paste it
+
+
+
+window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
+      const store = createStore(
+        allReducers,
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+      )
 
 
 
