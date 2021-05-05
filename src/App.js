@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import {useSelector} from 'react-redux';
 
 function App() {
+  const counter = useSelector(store => store.counter);
   return (
     <div>
       <h1>Axios and Redux</h1>
-      <h1>Counter: 0</h1>
+      <h1>Counter: {counter}</h1>
       <button>Increment</button>
     </div>
   );
@@ -260,6 +262,22 @@ export default App;
       The <Provider> component makes the Redux store available to any nested components 
       that need to access the Redux store.
     
+    8. In our App file, we need to import also: import {useSelector} from 'react-redux';
+       what this does is basically taking any of our reducers from the redux store and use it 
+       in our App. This is how we do it:
+
+                function App() {
+                  const counter = useSelector(store => store.counter);  *******
+                  return (
+                    <div>
+                      <h1>Axios and Redux</h1>
+                      <h1>Counter: {counter}</h1> *******
+                      <button>Increment</button>
+                    </div>
+                  );
+                }
+
+       
 
 
 
@@ -277,7 +295,7 @@ export default App;
         
       This will open a chrome extension, a state manager with redux. So you can see the:
       - action
-      - state
+      - state --> tree (shows the reducers with the initial state)
 
 
   
