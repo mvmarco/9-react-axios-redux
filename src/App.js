@@ -277,6 +277,10 @@ export default App;
                   );
                 }
 
+      What is very important to realize is that if we have another component linked to our app
+      we can just import in that component file, import {useSelector} and call the 
+      useSelector() function and call the reducer we want directly in the component we want and it will
+      work because now everything is connected to our store
        
 
 
