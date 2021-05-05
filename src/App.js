@@ -94,11 +94,16 @@ export default App;
   
   export default App;
   
-  
+  // ############################
+  // REDUX: STORE
+  // ############################
   Redux separates each individual states, that before we put in the components or we lifted on 
   the App level, to its own world, its own file, independent from everything. This place is 
   called "STORE". "STORE" is a globalized state.
   ----------------------------------------------------------
+  // ############################
+  // REDUX: ACTION
+  // ############################
   Another important definition of redux is "ACTION". It basically describes what we are about to
   do. It just describes the action. It is literally a function that returns a name as key 
   with what we need/want to do. For instance: 
@@ -235,18 +240,16 @@ export default App;
       copy it and the go to the original index.js and in the store, after all the reducers,
       paste it
 
-
-
-window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-
       const store = createStore(
         allReducers,
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
       )
-
+        
+      This will open a chrome extension, a state manager with redux. So you can see the:
+      - action
+      - state
 
 
 
   
- sjsjbasbdkbaskdbaskjbd
 */
