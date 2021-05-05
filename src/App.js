@@ -116,6 +116,9 @@ export default App;
 
   "type" is essentially the "name" of the action
   ----------------------------------------------------------
+  // ############################
+  // REDUX: REDUCER
+  // ############################
   The next terminology is the "REDUCER", another function that filters out the ACTION. The "REDUCER"
   will take a look at the action, and based on what the action is will modify the state.
   For instance the reducer function will take in the initial state, and the action as arguments.
@@ -134,6 +137,9 @@ export default App;
 
   essentially the reducer is the logic that says what is gonna happen to the state.
   ----------------------------------------------------------
+  // ############################
+  // REDUX: <DISPATCH></DISPATCH>
+  // ############################
   "DISPATCH" is basically sending the action to the reducer. It is the fire button that fires
   the action to the reducer. So you can say:
 
@@ -142,7 +148,9 @@ export default App;
   what is gonna do is going to the reducer, the reducer is gonna check what type of action
   was fired. Boom the state gets updated.
   ----------------------------------------------------------
-  
+  // ############################
+  // REDUX: HOW TO USE REDUX
+  // ############################
   steps to use Redux:
 
   1. npm install redux react-redux
@@ -233,6 +241,28 @@ export default App;
         allReducers
       )
       -----------------------------------------
+    
+    7. another step is to import in out main index.js: import { Provider } from "react-redux";
+       which since is coming from react-redux connect the functionality of redux to react.
+       so basically after doing that we wrap our <App /> with Provider passing the store we
+       have been creating:
+
+                ReactDOM.render(
+                    
+                  <React.StrictMode>
+                      <Provider store={store}>
+                        <App />
+                      </Provider>
+                  </React.StrictMode>,
+                  document.getElementById('root')
+                );
+
+      The <Provider> component makes the Redux store available to any nested components 
+      that need to access the Redux store.
+    
+
+
+
       REDUX DEV TOOLS EXTENSION: 
 
       important: go here: https://github.com/zalmoxisus/redux-devtools-extension
@@ -248,7 +278,6 @@ export default App;
       This will open a chrome extension, a state manager with redux. So you can see the:
       - action
       - state
-
 
 
   
