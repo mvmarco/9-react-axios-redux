@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import {useSelector} from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
+import { increment } from "./actions/counter";
 
 function App() {
   const counter = useSelector(store => store.counter);
+  const dispatch = useDispatch();
   return (
     <div>
       <h1>Axios and Redux</h1>
       <h1>Counter: {counter}</h1>
-      <button>Increment</button>
+      <button onClick={()=> dispatch(increment) }>Increment</button>
     </div>
   );
 }
@@ -282,7 +284,14 @@ export default App;
       useSelector() function and call the reducer we want directly in the component we want and it will
       work because now everything is connected to our store
        
+    9. Now if useSelector help us to show or retrieve the reducers from the store, if we want to 
+       update the value of the state we can use "dispatch". We need to use it in app.js as follow:
+       import {useSelector, useDispatch} from 'react-redux';
 
+       in sum UseSelector retrieve the initial state of a reducer, if you need the updated value
+       you need to call the action that will be linked to the updated state in the reducer as follow:
+
+ 
 
 
       REDUX DEV TOOLS EXTENSION: 
