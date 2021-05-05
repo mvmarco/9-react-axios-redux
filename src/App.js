@@ -9,7 +9,7 @@ function App() {
     <div>
       <h1>Axios and Redux</h1>
       <h1>Counter: {counter}</h1>
-      <button onClick={()=> dispatch(increment) }>Increment</button>
+      <button onClick={()=> dispatch({increment}) }>Increment</button>
     </div>
   );
 }
