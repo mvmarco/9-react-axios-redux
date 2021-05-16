@@ -9,7 +9,7 @@ function App() {
     <div>
       <h1>Axios and Redux</h1>
       <h1>Counter: {counter}</h1>
-      <button onClick={()=> dispatch({increment}) }>Increment</button>
+      <button onClick={()=> dispatch(increment()) }>Increment</button>
     </div>
   );
 }
@@ -267,6 +267,10 @@ export default App;
     8. In our App file, we need to import also: import {useSelector} from 'react-redux';
        what this does is basically taking any of our reducers from the redux store and use it 
        in our App. This is how we do it:
+                const store = createStore(
+                  allReducers,
+                  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+                )
 
                 function App() {
                   const counter = useSelector(store => store.counter);  *******
@@ -290,6 +294,33 @@ export default App;
 
        in sum UseSelector retrieve the initial state of a reducer, if you need the updated value
        you need to call the action that will be linked to the updated state in the reducer as follow:
+
+        function App() {
+          const counter = useSelector(store => store.counter);
+          const dispatch = useDispatch();
+          return (
+            <div>
+              <h1>Axios and Redux</h1>
+              <h1>Counter: {counter}</h1>
+              <button onClick={()=> dispatch(increment()) }>Increment</button>
+            </div>
+          );
+        }
+
+      increment() comes from a file, under actions, which is basically the action connected to the
+      reducers. So when we dispatch something we dispatch an object with the type of increment that
+      comes from the action function:
+
+      export const increment = () => {
+        return {
+          type: 'INCREMENT'
+        }
+      }
+
+      when we dispatch we send it to the reducer automatically, so we send the type: 'INCREMENT'
+      to the reducer automatically in fact in the dispatch you could even pass:
+      dispatch({type: "INCREMENT"}) because it will go to the reducer and find the type needed
+      and the reducer update the state with +1
 
  
 
