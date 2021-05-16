@@ -1,3 +1,4 @@
+import Login from "./Login";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { increment } from "./actions/counter";
@@ -5,11 +6,15 @@ import { increment } from "./actions/counter";
 function App() {
   const counter = useSelector(store => store.counter);
   const dispatch = useDispatch();
+  const signedIn = useSelector(store => store.isLogged)
   return (
     <div>
       <h1>Axios and Redux</h1>
       <h1>Counter: {counter}</h1>
-      <button onClick={()=> dispatch(increment()) }>Increment</button>
+      <button onClick={() => dispatch(increment())}>Increment</button>
+      <Login />
+      {signedIn ? <h1> YOU ARE SIGNED IN</h1> : <h1> Please log in</h1>}
+     
     </div>
   );
 }
@@ -317,10 +322,10 @@ export default App;
         }
       }
 
-      when we dispatch we send it to the reducer automatically, so we send the type: 'INCREMENT'
-      to the reducer automatically in fact in the dispatch you could even pass:
-      dispatch({type: "INCREMENT"}) because it will go to the reducer and find the type needed
-      and the reducer update the state with +1
+      when we dispatch we send automatically an action to the reducer, so even if we would pass
+      to the reducer: dispatch({type: "INCREMENT"}) it will go to the reducer and find the type/action 
+      needed and the reducer will update the state with +1. we made a file with the action separately.
+      that is why we pass dispatch(increment()) - increment() is a function in the counter action folder.
 
  
 
