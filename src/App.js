@@ -351,7 +351,7 @@ export default App;
     // ############################
     // REDUX-THUNK
     // ############################
-    
+    PS: the link we use is from here under usage: https://github.com/zalmoxisus/redux-devtools-extension
     // short recap and redux-thunk
 
 
