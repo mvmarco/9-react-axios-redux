@@ -12,9 +12,7 @@ function App() {
       <h1>Axios and Redux</h1>
       <h1>Counter: {counter}</h1>
       <button onClick={() => dispatch(increment())}>Increment</button>
-      <Login />
-      {signedIn ? <h1> YOU ARE SIGNED IN</h1> : <h1> Please log in</h1>}
-     
+      <Login />     
     </div>
   );
 }
